@@ -1,6 +1,6 @@
 <template>
   <ContentBase>
-    首页
+    好友列表
   </ContentBase>
 </template>
 
@@ -8,7 +8,7 @@
 import ContentBase from "@/components/ContentBase";
 
 export default {
-  name: "HomeView",
+  name: "UserListView",
   components: {ContentBase},
 }
 </script>
