@@ -12,15 +12,31 @@
 
 <script>
 import {ref} from "vue";
+import {useStore} from "vuex";
+import $ from 'jquery';
 
 export default {
   name: "UserProfileWrite",
-  setup: function (props, context) {
+  setup(props, context) {
     let content = ref("");
-
+    const store = useStore();
     const submitPost = function () {
-      context.emit("submitPost", content.value);
-      content.value = "";
+      $.ajax({
+        url: "https://app165.acapp.acwing.com.cn/myspace/post/",
+        type: "POST",
+        data: {
+          content: content.value,
+        },
+        headers: {
+          'Authorization': "Bearer " + store.state.user.access,
+        },
+        success(resp) {
+          if(resp.result === "success") {
+            context.emit('submitPost', content.value);
+            content.value = "";
+          }
+        }
+      })
     }
 
     return {

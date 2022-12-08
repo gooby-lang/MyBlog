@@ -13,35 +13,39 @@ const routes = [
     component: HomeView
   },
   {
-    path: "/home",
+    path: "/home/",
     name: "home",
     component: HomeView
   },
   {
-    path: "/login",
+    path: "/login/",
     name: "login",
     component: loginView
   },
   {
-    path: "/404",
+    path: "/404/",
     name: "404",
     component: NotFoundView
   },
   {
-    path: "/register",
+    path: "/register/",
     name: "register",
     component: RegisterView
   },
   {
-    path: "/userlist",
+    path: "/userlist/",
     name: "userlist",
     component: UserListView
   },
   {
-    path: "/userprofile",
+    path: "/userprofile/:userId/",
     name: "userprofile",
     component: UserProfileView
   },
+  {
+    path: "/:catchAll(.*)",
+    redirect: "404",
+  }
 ]
 
 const router = createRouter({
